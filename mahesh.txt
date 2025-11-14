@@ -1,0 +1,7 @@
+Artificial Intelligence is transforming the world rapidly.
+It allows machines to think, learn, and act like humans.
+Python is one of the most popular languages used for AI development.
+
+Students explore Machine Learning, Natural Language Processing, and Robotics.
+Creativity and logic go hand in hand to create intelligent systems.
+HELLO WORLD! This is an example for UPPERCASE letters.

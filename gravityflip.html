@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mahesh's Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #0d0d0d;
+            color: white;
+            overflow-x: hidden;
+        }
+        header {
+            padding: 2rem;
+            text-align: center;
+            background: linear-gradient(90deg, #ff6f61, #ff9966);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        header p {
+            font-size: 1.2rem;
+        }
+        canvas {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        section {
+            padding: 3rem;
+            max-width: 900px;
+            margin: auto;
+        }
+        h2 {
+            border-bottom: 2px solid #ff6f61;
+            padding-bottom: 0.5rem;
+        }
+        .project {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="bgCanvas"></canvas>
+    <header>
+        <h1>Mahesh</h1>
+        <p>Innovator | Tech Enthusiast | AI & Robotics Developer</p>
+    </header>
+
+    <section>
+        <h2>About Me</h2>
+        <p>
+            I am Mahesh, Founder & Lead Coordinator of the Catalyst Club at SCIENT Institute of Technology. Passionate about AI, robotics, and innovation, I aim to bridge the gap between classroom learning and real-world applications.
+        </p>
+    </section>
+
+    <section>
+        <h2>Projects</h2>
+        <div class="project">
+            <h3>AI Voice Assistant Robot</h3>
+            <p>A robot with movement and handshake capabilities, integrated with a voice assistant using ESP32, Wit.AI, and Gemini AI.</p>
+        </div>
+        <div class="project">
+            <h3>Lost & Found Portal</h3>
+            <p>A web portal for Scient Institute of Technology using Lovable AI for reporting and retrieving lost items.</p>
+        </div>
+        <div class="project">
+            <h3>Roadside Assistance App</h3>
+            <p>An app that helps connect vehicle breakdown victims with nearby mechanics, including live chat and OTP verification.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Contact</h2>
+        <p>Email: mahesh@example.com</p>
+        <p>LinkedIn: linkedin.com/in/mahesh</p>
+    </section>
+
+    <script>
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let dots = [];
+        for (let i = 0; i < 100; i++) {
+            dots.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                r: Math.random() * 3 + 1,
+                dx: (Math.random() - 0.5) * 1,
+                dy: (Math.random() - 0.5) * 1
+            });
+        }
+
+        function drawDots() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let dot of dots) {
+                ctx.beginPath();
+                ctx.arc(dot.x, dot.y, dot.r, 0, Math.PI * 2);
+                ctx.fillStyle = '#ff6f61';
+                ctx.fill();
+                dot.x += dot.dx;
+                dot.y += dot.dy;
+                if (dot.x < 0 || dot.x > canvas.width) dot.dx *= -1;
+                if (dot.y < 0 || dot.y > canvas.height) dot.dy *= -1;
+            }
+            requestAnimationFrame(drawDots);
+        }
+        drawDots();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>
